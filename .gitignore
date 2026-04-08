@@ -230,5 +230,7 @@ evaluation/__pycache__/
 *.dat
 *.pkl
 *.bin
+
+# Claude Code internals and review artifacts
 .claude/
-.claude-reviews/
+claude-reviews/
