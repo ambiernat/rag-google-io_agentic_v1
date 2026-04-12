@@ -27,9 +27,10 @@ It combines:
 - Offline comparison of reranking strategies
 
 ### Agentic Retrieval
-- Query rewriting — LLM-generated variants to broaden recall
-- Self-evaluation — per-chunk relevance scoring (1–5)
-- Retry loop — automatic strategy switching (hybrid → dense → sparse)
+- **Query rewriting** — GPT-4o-mini rewrites queries to improve retrieval vocabulary coverage
+- **Self-evaluation** — LLM scores retrieved documents 0–1 for relevance against the original query
+- **Retry loop** — automatic strategy switching (`hybrid → dense → sparse`) if score falls below threshold (0.65)
+- **Best-result tracking** — carries forward the highest-scoring strategy result across all attempts
 
 ### Evaluation
 - Recall@K, MRR, Precision@K
@@ -48,6 +49,14 @@ It combines:
 
 ```text
 .
+├── agent/                  # Agentic retrieval layer (LangGraph)
+│   ├── graph.py            # LangGraph StateGraph — rewrite → retrieve → evaluate → switch
+│   ├── llm.py              # LLM factory (GPT-4o-mini via LangChain)
+│   ├── utils.py            # Document formatting helpers
+│   └── nodes/
+│       ├── rewrite.py      # Query rewriting node
+│       └── evaluate.py     # Relevance scoring node (0–1)
+│
 ├── api/                    # FastAPI app (production)
 │   ├── main.py
 │   ├── routers/
@@ -61,13 +70,8 @@ It combines:
 │   │   ├── retrieve_dense.py
 │   │   ├── retrieve_sparse.py
 │   │   ├── retrieve_hybrid.py
-│   │   └── dispatcher.py       # unified retrieve(query, strategy, top_k)
-│   ├── rerankers/
-│   └── agent/                  # agentic retrieval layer
-│       ├── query_rewriter.py   # Phase 1: LLM query rewriting
-│       ├── self_evaluator.py   # Phase 2: chunk relevance scoring
-│       ├── retry_loop.py       # Phase 3: strategy switching
-│       └── config.yaml
+│   │   └── dispatcher.py
+│   └── rerankers/
 │
 ├── vector_store/           # Qdrant ingestion
 │   ├── ingest_dense.py
@@ -78,17 +82,22 @@ It combines:
 │   ├── evaluate_dense.py
 │   ├── evaluate_sparse.py
 │   ├── evaluate_hybrid.py
-│   └── evaluate_rerank_post_hpo.py
+│   ├── evaluate_rerank_post_hpo.py
+│   └── evaluate_agentic.py
+│
+├── retrieval/hpo/          # HPO scripts
+│   ├── hybrid_rerank_hpo.py
+│   └── config_hybrid_rerank.yaml
 │
 ├── ingestion/              # Data ingestion & preprocessing
 ├── data/                   # Raw, chunked, evaluation data
 ├── qdrant_storage/         # Local Qdrant persistence (dev)
 ├── tests/                  # Unit, integration & E2E tests
 │
-├── Dockerfile               # Production image
-├── docker-compose.yml       # Local dev stack
-├── docker-compose_prod.yml  # Production-like stack
-├── requirements.api.txt
+├── Dockerfile
+├── docker-compose.yml
+├── docker-compose_prod.yml
+├── requirements.dev.txt
 └── README.md
 ```
 
@@ -153,7 +162,7 @@ data/eval/results/
 
 ## 📊 Evaluation Results
 
-Evaluation was conducted in three stages, each progressively improving ground truth quality.
+Evaluation was conducted in five rounds, each progressively improving ground truth quality and retrieval strategy.
 
 ### Ground Truth Construction
 
@@ -219,28 +228,59 @@ The reranker does not improve performance on this corpus. Precision drops signif
 
 ---
 
-### Round 5 — Agentic Retrieval (Query Rewriting + Hybrid)
+### Round 5 — Agentic Retrieval (LangGraph + GPT-4o-mini)
 
-An agentic retrieval layer was added on top of the existing hybrid retriever. The pipeline consists of three phases:
+An agentic retrieval layer was built using **LangGraph** and **LangChain**, wrapping the existing retrieval strategies in an intelligent pipeline with three components:
 
-1. **Query rewriter** — GPT-4o-mini generates one retrieval-optimised variant of the user query, diversifying vocabulary to improve recall across both BM25 and dense retrieval
-2. **Self-evaluator** — scores each retrieved chunk 1–5 for relevance; acts as a circuit breaker (scores ≤ 2 trigger strategy switching, not re-ranking)
-3. **Retry loop** — if results fail the circuit breaker, falls back through `hybrid → dense → sparse`
+#### Pipeline Architecture
 
-This run used: `num_variants=1`, `top_k=5`, `use_self_eval=False` (query rewriting + hybrid only, no LLM scoring or retry), evaluated on the held-out **test set** (`data/eval/test/multi_doc.json`).
+```
+User Query
+    ↓
+[Rewrite Node] — GPT-4o-mini rewrites query for better retrieval coverage
+    ↓
+[Retrieve Node] — retrieves top-10 docs using current strategy (default: hybrid)
+    ↓
+[Evaluate Node] — GPT-4o-mini scores retrieved docs 0–1 against original query
+    ↓
+[Decision] — score ≥ 0.65 → return results | score < 0.65 → switch strategy
+    ↓
+[Switch Node] — hybrid → dense → sparse (fallback chain)
+```
 
-| Method | Recall@5 | MRR | Precision@5 |
-|--------|----------|-----|-------------|
-| Hybrid (baseline) | 1.0000 | 0.9084 | 0.4513 |
-| Agentic (rewrite + hybrid) | 1.0000 | 0.9066 | 0.4524 |
+#### Key Design Decisions
 
-Recall is maintained at 1.0. MRR sees a marginal drop of −0.0018, while Precision improves slightly (+0.0011). The near-identical performance confirms that query rewriting does not degrade retrieval quality on this corpus — the rewritten variant occasionally shifts merge order by a small amount but leaves the overall result set essentially unchanged.
+- **Evaluation uses the original query** (not the rewritten one) — relevance is judged against user intent, not the rewrite
+- **Best-result tracking** — the agent carries forward the highest-scoring strategy result across all attempts, returning the best rather than the last
+- **LLM scoring scale** — 0.0 (irrelevant) to 1.0 (perfect match), with threshold at 0.65
+- **Max attempts**: 2 per query before forcing an exit
+
+#### Results (187 queries, paraphrased + multi-doc ground truth)
+
+| Method | Recall@5 | MRR | Precision@5 | Avg Attempts |
+|--------|----------|-----|-------------|--------------|
+| Hybrid (baseline) | 0.984 | 0.922 | 0.458 | — |
+| Agentic (LangGraph) | 0.9947 | 0.9149 | 0.4342 | 1.03 |
+
+#### Strategy Breakdown
+
+| Strategy | Queries | % |
+|----------|---------|---|
+| hybrid | 186 | 99.5% |
+| dense | 1 | 0.5% |
+
+**Key observations:**
+- Recall improves slightly (+0.0107) over the hybrid baseline — query rewriting occasionally surfaces relevant documents that the original query missed
+- MRR drops marginally (−0.0071) — the LLM evaluator's score distribution introduces occasional reordering that doesn't always align with ground truth rank
+- Precision drops slightly (−0.0238) — top-10 retrieval with LLM filtering vs. top-5 direct retrieval changes the precision denominator dynamics
+- The agent almost exclusively uses hybrid (99.5%) — confirming hybrid is strong enough that fallback is rarely needed
+- Average of 1.03 attempts per query — the agent almost never needs to switch strategy, meaning hybrid retrieval consistently clears the 0.65 threshold
 
 ---
 
 ### Hyperparameter Optimisation (HPO)
 
-Optuna was used to search over retrieve_k ∈ {20, 30, 50, 75, 100}, rerank_k ∈ {5, 10}, and two CrossEncoder models over 20 trials on a 50-query subsample. The best trial returned a value of ~0.0 (after cost penalty), confirming no meaningful gain from reranking on this dataset. HPO results are tracked in MLflow under the `hybrid_rerank_hpo` experiment.
+Optuna was used to search over `retrieve_k ∈ {20, 30}`, `rerank_k ∈ {5}`, and two CrossEncoder models over 20 trials on a 50-query subsample. Results are tracked in MLflow under the `hybrid_rerank_hpo` experiment on Databricks. The best trial confirmed no meaningful gain from reranking on this dataset.
 
 ---
 
@@ -253,6 +293,61 @@ Optuna was used to search over retrieve_k ∈ {20, 30, 50, 75, 100}, rerank_k �
 | Recall@5 | 0.984 |
 | MRR | 0.922 |
 | Precision@5 | 0.458 |
+
+The agentic layer is available as an optional enhancement for queries where retrieval confidence is low, but adds LLM latency (~5s per query) and is not recommended as the default production path on this corpus.
+
+---
+
+## 🤖 Agentic Layer — Implementation Details
+
+### LangGraph State
+
+```python
+class AgentState(TypedDict):
+    query: str               # original user query
+    rewritten_query: str     # LLM-rewritten variant
+    results: List[Any]       # current retrieval results
+    score: float             # current LLM relevance score
+    attempts: int            # number of strategies tried
+    strategy: str            # current retrieval strategy
+    best_score: float        # best score seen so far
+    best_results: List[Any]  # results from best strategy
+    best_strategy: str       # name of best strategy
+```
+
+### Query Rewriter
+
+GPT-4o-mini rewrites the user query to improve retrieval keyword coverage without adding new information:
+
+```
+Rewrite the following query to improve retrieval.
+Focus on clarity and keywords. Do not add extra information.
+```
+
+### Relevance Evaluator
+
+GPT-4o-mini scores retrieved documents on a 0–1 scale:
+
+```
+0.0 = completely irrelevant
+0.3 = mostly irrelevant
+0.5 = partially relevant
+0.7 = mostly relevant
+0.9 = highly relevant
+1.0 = perfect match
+```
+
+Evaluation is always performed against the **original query**, not the rewritten one.
+
+### Running the Agent
+
+```python
+from agent.graph import run_agent
+
+result = run_agent("What are the trends in agentic AI?")
+print(result["score"])     # best relevance score
+print(result["strategy"])  # winning strategy
+```
 
 ---
 
@@ -275,82 +370,40 @@ pytest
 This project is fully deployed on AWS using serverless containers.
 
 ### 🐳 Docker
-Production Docker image bundles:
 
-- FastAPI API
-- Retrieval logic
-- Model dependencies
-
-**Image size**: ~550MB
-
----
+Production Docker image bundles FastAPI, retrieval logic, and model dependencies. **Image size**: ~550MB
 
 ### 📦 ECR — Elastic Container Registry
-
-- Private image registry
-- Repository: `fastapi-rag`
-
-**Image URI:**
 
 ```text
 886166401772.dkr.ecr.us-east-1.amazonaws.com/fastapi-rag:latest
 ```
 
----
-
 ### 🎯 ECS — Elastic Container Service
 
 - **Cluster:** `rag-cluster`
-
-**Task Definition:**
 - 2 containers: FastAPI (3 GB RAM) + Qdrant (1 GB RAM)
-- Total resources: 1 vCPU, 4 GB RAM
+- Total: 1 vCPU, 4 GB RAM
 
----
-
-### ⚡ Fargate (Serverless Compute)
-
-- No servers to manage  
-- Pay only when tasks are running  
+### ⚡ Fargate
 
 | State | Cost |
 |-------|------|
 | Running (1 task) | ~$42/month |
 | Desired count = 0 | $0 |
 
----
-
 ### 🌐 Networking
-
-- Default VPC, public IP assigned per task  
-- Security group: inbound TCP 8000
 
 ```text
 http://<public-ip>:8000
 ```
 
----
+Security group: inbound TCP 8000
 
 ### 📊 CloudWatch Logs
 
 - **Log group:** `/ecs/rag-task`
 - Separate log streams per container (`fastapi`, `qdrant`)
-- Used to debug startup failures, missing models, and misconfigured environment variables
-
----
-
-### 🔐 IAM
-
-- **ECS Task Execution Role:** pull images from ECR, write logs to CloudWatch
-- CLI user created for deployments with least-privilege permissions
-
----
-
-### 💻 EC2 (Temporary)
-
-Used once when CloudShell ran out of disk space. A `t3.small` instance was launched to build and push the Docker image, then terminated immediately — no ongoing cost.
-
----
 
 ### To Restart the App
 
@@ -394,6 +447,7 @@ This repository implements a **complete RAG system lifecycle**:
 - ✔ Research & evaluation
 - ✔ Retrieval + reranking experimentation  
 - ✔ Progressive ground truth improvement (synthetic → paraphrased → multi-doc)
+- ✔ Agentic retrieval with LangGraph (query rewriting + self-evaluation + strategy switching)
 - ✔ Production FastAPI service
 - ✔ Dockerized deployment
 - ✔ Serverless AWS infrastructure
