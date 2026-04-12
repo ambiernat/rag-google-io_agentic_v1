@@ -162,6 +162,10 @@ data/eval/results/
 
 ## 📊 Evaluation Results
 
+> [!NOTE]
+> The evaluation was done against the synthetically generated ground truth which was then paraphrased using LLM, it's not real world data.
+> As a consequence, the metrics for ALL of the retrieval strategies (hybrid, dense, sparse) are inflated!
+
 Evaluation was conducted in five rounds, each progressively improving ground truth quality and retrieval strategy.
 
 ### Ground Truth Construction
