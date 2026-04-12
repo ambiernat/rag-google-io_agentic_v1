@@ -1,4 +1,4 @@
--r requirements.api.txt
+
 
 youtube-transcript-api
 jupyter
@@ -19,3 +19,6 @@ PyYAML
 pytest
 pytest-asyncio
 httpx
+langchain-openai 
+langchain-core
+langgraph
