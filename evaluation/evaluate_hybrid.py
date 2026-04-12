@@ -12,7 +12,7 @@ from pathlib import Path
 from tqdm import tqdm
 from retrieval.retrievers.retrieve_hybrid import retrieve_hybrid  # hybrid retriever
 from datetime import datetime, timezone
-from retrieval.evaluation.metrics import recall_at_k, precision_at_k, mrr
+from evaluation.metrics import recall_at_k, precision_at_k, mrr
 
 logger = logging.getLogger(__name__)
 
