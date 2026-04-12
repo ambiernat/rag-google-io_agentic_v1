@@ -233,4 +233,4 @@ evaluation/__pycache__/
 
 # Claude Code internals and review artifacts
 .claude/
-.claude-reviews/
+claude-reviews/
