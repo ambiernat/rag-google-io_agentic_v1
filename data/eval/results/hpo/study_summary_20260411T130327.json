@@ -1,0 +1,24 @@
+[
+  {
+    "number":0,
+    "value":-0.03,
+    "datetime_start":1775911984460,
+    "datetime_complete":1775912446730,
+    "duration":462269,
+    "params_rerank_k":5,
+    "params_rerank_model":"cross-encoder\/ms-marco-MiniLM-L-6-v2",
+    "params_retrieve_k":30,
+    "state":"COMPLETE"
+  },
+  {
+    "number":1,
+    "value":-0.02,
+    "datetime_start":1775912446731,
+    "datetime_complete":1775912606995,
+    "duration":160264,
+    "params_rerank_k":5,
+    "params_rerank_model":"cross-encoder\/ms-marco-TinyBERT-L-2-v2",
+    "params_retrieve_k":20,
+    "state":"COMPLETE"
+  }
+]

@@ -1,0 +1,916 @@
+[
+  {
+    "query": "How can I efficiently handle prompts that mix text and images in my app, using a simple settings switch to choose the model name and a storage area for large media uploads, including using shareable URLs and setting access rules, plus what costs should I expect?",
+    "relevant_doc_ids": [
+      "U8Nb68XsVY4__chunk_002",
+      "U8Nb68XsVY4__chunk_006",
+      "gstgT0WRoiE__chunk_007"
+    ],
+    "reranked_doc_ids": [
+      "U8Nb68XsVY4__chunk_005",
+      "U8Nb68XsVY4__chunk_002",
+      "U8Nb68XsVY4__chunk_006",
+      "CjpZCWYrSxM__chunk_011",
+      "o2wkYzu5u50__chunk_009"
+    ],
+    "recall@k": 1,
+    "mrr": 0.5,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How can a single Android app automatically resize and run smoothly on different devices like tablets, laptops, AR/VR headsets, and foldable screens?",
+    "relevant_doc_ids": [
+      "15oPNK1W0Tw__chunk_012",
+      "GjvgtwSOCao__chunk_010",
+      "15oPNK1W0Tw__chunk_010",
+      "15oPNK1W0Tw__chunk_013",
+      "15oPNK1W0Tw__chunk_011",
+      "15oPNK1W0Tw__chunk_017",
+      "15oPNK1W0Tw__chunk_021",
+      "15oPNK1W0Tw__chunk_020",
+      "15oPNK1W0Tw__chunk_005",
+      "15oPNK1W0Tw__chunk_002",
+      "15oPNK1W0Tw__chunk_000",
+      "15oPNK1W0Tw__chunk_003",
+      "15oPNK1W0Tw__chunk_019",
+      "15oPNK1W0Tw__chunk_006",
+      "15oPNK1W0Tw__chunk_016"
+    ],
+    "reranked_doc_ids": [
+      "15oPNK1W0Tw__chunk_006",
+      "MmeJSLAnB-M__chunk_000",
+      "15oPNK1W0Tw__chunk_016",
+      "15oPNK1W0Tw__chunk_001",
+      "15oPNK1W0Tw__chunk_002"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "In a full-stack web app that uses Firebase, what are the best ways to handle user sign-in and how the server should access data so you avoid Admin SDK security risks while still using the client SDK?",
+    "relevant_doc_ids": [
+      "XEhd9a9YhSk__chunk_008",
+      "XEhd9a9YhSk__chunk_009"
+    ],
+    "reranked_doc_ids": [
+      "XEhd9a9YhSk__chunk_008",
+      "XEhd9a9YhSk__chunk_001",
+      "XEhd9a9YhSk__chunk_009",
+      "R_gqv8PwM78__chunk_012",
+      "XEhd9a9YhSk__chunk_000"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What should developers do to keep API keys from getting exposed in a mobile app, and how can Firebase help reduce that risk?",
+    "relevant_doc_ids": [
+      "rxKYK3DIzN0__chunk_007",
+      "rxKYK3DIzN0__chunk_002",
+      "rxKYK3DIzN0__chunk_001",
+      "U8Nb68XsVY4__chunk_002",
+      "XEhd9a9YhSk__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "rxKYK3DIzN0__chunk_002",
+      "rxKYK3DIzN0__chunk_001",
+      "XEhd9a9YhSk__chunk_008",
+      "U8Nb68XsVY4__chunk_001",
+      "XEhd9a9YhSk__chunk_012"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "Which platforms or tools can I use to test Gemini's multimodal features, and how should I decide between Nano, Pro, or other Gemini options for my use case?",
+    "relevant_doc_ids": [
+      "4TE-KFXvhAk__chunk_002",
+      "7Tnq4y7T4xs__chunk_004",
+      "mP9QESmEDls__chunk_007"
+    ],
+    "reranked_doc_ids": [
+      "7Tnq4y7T4xs__chunk_004",
+      "GjvgtwSOCao__chunk_021",
+      "7Tnq4y7T4xs__chunk_005",
+      "7Tnq4y7T4xs__chunk_002",
+      "8iIvAMZ-XYU__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "What are quantum bits, and how does being in multiple states at once help quantum computers outperform ordinary bits?",
+    "relevant_doc_ids": [
+      "5HaXfjHtCWo__chunk_001"
+    ],
+    "reranked_doc_ids": [
+      "5HaXfjHtCWo__chunk_001",
+      "5HaXfjHtCWo__chunk_000",
+      "5HaXfjHtCWo__chunk_004",
+      "5HaXfjHtCWo__chunk_009",
+      "5HaXfjHtCWo__chunk_003"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How does automatic context caching help reduce the number of tokens an AI model has to process when dealing with long conversations, and how is that different from manually caching the context?",
+    "relevant_doc_ids": [
+      "gHHjDRDNUNU__chunk_010"
+    ],
+    "reranked_doc_ids": [
+      "gHHjDRDNUNU__chunk_010",
+      "U8Nb68XsVY4__chunk_003",
+      "w_W2brDZDko__chunk_001",
+      "gstgT0WRoiE__chunk_007",
+      "mP9QESmEDls__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "Which four generative media tools does Google Cloud offer, and what kind of content does each one generate (images, videos, speech, and music)?",
+    "relevant_doc_ids": [
+      "o8NiE3XMPrM__chunk_036",
+      "tMUxxCKXz4c__chunk_006",
+      "tMUxxCKXz4c__chunk_000"
+    ],
+    "reranked_doc_ids": [
+      "tMUxxCKXz4c__chunk_000",
+      "7Tnq4y7T4xs__chunk_003",
+      "BqQiJ5LSASI__chunk_004",
+      "tMUxxCKXz4c__chunk_003",
+      "xo271p-Fl_4__chunk_010"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "What are the big changes in the latest release of the framework, including new integrations, improvements to server-side rendering, and how template variables are handled?",
+    "relevant_doc_ids": [
+      "eIeJmYdYMQo__chunk_010",
+      "eIeJmYdYMQo__chunk_007",
+      "eIeJmYdYMQo__chunk_018",
+      "eIeJmYdYMQo__chunk_006"
+    ],
+    "reranked_doc_ids": [
+      "eIeJmYdYMQo__chunk_006",
+      "eIeJmYdYMQo__chunk_017",
+      "eIeJmYdYMQo__chunk_010",
+      "eIeJmYdYMQo__chunk_018",
+      "R_gqv8PwM78__chunk_012"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How can I use the developer interface to test tools that search for movies and pull up reviews, and how does the assistant decide whether to suggest things or ask me to clarify based on my watch history and reviews?",
+    "relevant_doc_ids": [
+      "nZhkjSFB6UA__chunk_008",
+      "nZhkjSFB6UA__chunk_007",
+      "nZhkjSFB6UA__chunk_006",
+      "nZhkjSFB6UA__chunk_004",
+      "nZhkjSFB6UA__chunk_000"
+    ],
+    "reranked_doc_ids": [
+      "nZhkjSFB6UA__chunk_006",
+      "nZhkjSFB6UA__chunk_004",
+      "nZhkjSFB6UA__chunk_005",
+      "nZhkjSFB6UA__chunk_007",
+      "nZhkjSFB6UA__chunk_003"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How do I get a Flutter app talking to Gemini through the Vertex AI SDK while using Firebase, and what do I need to set up for the environment and project configuration?",
+    "relevant_doc_ids": [
+      "xo271p-Fl_4__chunk_003",
+      "xo271p-Fl_4__chunk_006",
+      "xo271p-Fl_4__chunk_002",
+      "xo271p-Fl_4__chunk_000",
+      "U8Nb68XsVY4__chunk_001",
+      "xo271p-Fl_4__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "xo271p-Fl_4__chunk_008",
+      "xo271p-Fl_4__chunk_002",
+      "xo271p-Fl_4__chunk_001",
+      "xo271p-Fl_4__chunk_003",
+      "v6Rzo5khNE8__chunk_017"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "So, when would I pick one playback option over the other in this Media3 setup, and how do the effects get applied differently in each?",
+    "relevant_doc_ids": [
+      "3zXVPU2vKXs__chunk_010",
+      "3zXVPU2vKXs__chunk_005"
+    ],
+    "reranked_doc_ids": [
+      "3zXVPU2vKXs__chunk_010",
+      "IaNpcrCSDiI__chunk_020",
+      "3zXVPU2vKXs__chunk_005",
+      "3zXVPU2vKXs__chunk_002",
+      "3zXVPU2vKXs__chunk_009"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "Why do researchers push for a clear, formal definition of general artificial intelligence, and what safety and reliability concerns are being raised for the first such systems?",
+    "relevant_doc_ids": [
+      "Uh-7YX8tkxI__chunk_006",
+      "Uh-7YX8tkxI__chunk_007"
+    ],
+    "reranked_doc_ids": [
+      "Uh-7YX8tkxI__chunk_007",
+      "o8NiE3XMPrM__chunk_014",
+      "Uh-7YX8tkxI__chunk_005",
+      "o7Bv4r08FBM__chunk_000",
+      "Uh-7YX8tkxI__chunk_010"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "Hey, do you know when Google's Gemini-powered home APIs will be opened to developers, and how I can get in on early access and the related dev challenges for Pixel smart-home features?",
+    "relevant_doc_ids": [
+      "HZvb2t3ZBBg__chunk_004"
+    ],
+    "reranked_doc_ids": [
+      "HZvb2t3ZBBg__chunk_004",
+      "HZvb2t3ZBBg__chunk_002",
+      "HZvb2t3ZBBg__chunk_000",
+      "HZvb2t3ZBBg__chunk_003",
+      "4TE-KFXvhAk__chunk_007"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How do the Home APIs let different apps talk to Matter devices, and what examples show this in Google Play and the Apple App Store?",
+    "relevant_doc_ids": [
+      "HZvb2t3ZBBg__chunk_000",
+      "HZvb2t3ZBBg__chunk_001"
+    ],
+    "reranked_doc_ids": [
+      "HZvb2t3ZBBg__chunk_001",
+      "HZvb2t3ZBBg__chunk_002",
+      "HZvb2t3ZBBg__chunk_000",
+      "HZvb2t3ZBBg__chunk_003",
+      "IaNpcrCSDiI__chunk_022"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How do I set up a Flutter app to work with cloud services and AI features, including the core setup, the AI packages, and the Flutter helper tool, and connect the app to our cloud project?",
+    "relevant_doc_ids": [
+      "xo271p-Fl_4__chunk_000",
+      "xo271p-Fl_4__chunk_003",
+      "xo271p-Fl_4__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "xo271p-Fl_4__chunk_003",
+      "xo271p-Fl_4__chunk_002",
+      "v6Rzo5khNE8__chunk_002",
+      "v6Rzo5khNE8__chunk_017",
+      "flwULzNYRac__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How do real-time transit pass updates and season passes work with my Wallet, using secure digital payments?",
+    "relevant_doc_ids": [
+      "21tfI9O9RrA__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "21tfI9O9RrA__chunk_008",
+      "21tfI9O9RrA__chunk_009",
+      "21tfI9O9RrA__chunk_006",
+      "21tfI9O9RrA__chunk_007",
+      "21tfI9O9RrA__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How do I make the first element get focus automatically on a TV app screen using a Compose-style UI, with a focusRequester, a focus modifier, and LaunchedEffect?",
+    "relevant_doc_ids": [
+      "OosLbRBM9dA__chunk_004"
+    ],
+    "reranked_doc_ids": [
+      "OosLbRBM9dA__chunk_004",
+      "OosLbRBM9dA__chunk_005",
+      "89UusPuz8q4__chunk_001",
+      "VTCIStB6y8s__chunk_002",
+      "IaNpcrCSDiI__chunk_001"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "What are the latest improvements to Android\u2019s car apps, and how can developers use the new in-car calling and messaging features to build those experiences?",
+    "relevant_doc_ids": [
+      "ud09zuXHst4__chunk_009"
+    ],
+    "reranked_doc_ids": [
+      "ud09zuXHst4__chunk_009",
+      "ud09zuXHst4__chunk_008",
+      "ud09zuXHst4__chunk_003",
+      "ud09zuXHst4__chunk_011",
+      "ud09zuXHst4__chunk_005"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How does the scene builder in this tool work for putting together shots, including uploading or generating images and tapping the plus button to add new shots with precise prompts?",
+    "relevant_doc_ids": [
+      "o8NiE3XMPrM__chunk_038",
+      "o8NiE3XMPrM__chunk_039"
+    ],
+    "reranked_doc_ids": [
+      "o8NiE3XMPrM__chunk_038",
+      "o8NiE3XMPrM__chunk_039",
+      "sNwaU0w3NS8__chunk_005",
+      "tMUxxCKXz4c__chunk_003",
+      "tMUxxCKXz4c__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How can this app spot email campaigns with more than 2,500 impressions and show the top results in a table?",
+    "relevant_doc_ids": [
+      "YCNDg9j0p5o__chunk_013",
+      "YCNDg9j0p5o__chunk_012"
+    ],
+    "reranked_doc_ids": [
+      "YCNDg9j0p5o__chunk_012",
+      "YCNDg9j0p5o__chunk_013",
+      "15oPNK1W0Tw__chunk_001",
+      "nZhkjSFB6UA__chunk_000",
+      "POUqfDBtRbg__chunk_009"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How can I build and launch my own AI assistant inside a Google tool, set its goals and rules, and connect it to data sources and a notebook-style language model?",
+    "relevant_doc_ids": [
+      "xo271p-Fl_4__chunk_001",
+      "8rlNdKywldQ__chunk_000",
+      "3Wo-iucic7I__chunk_006",
+      "xLmJJk1gbuE__chunk_005",
+      "wz3kQQubPkc__chunk_004",
+      "8rlNdKywldQ__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "xLmJJk1gbuE__chunk_004",
+      "GjvgtwSOCao__chunk_002",
+      "gHHjDRDNUNU__chunk_007",
+      "xo271p-Fl_4__chunk_001",
+      "xLmJJk1gbuE__chunk_005"
+    ],
+    "recall@k": 1,
+    "mrr": 0.25,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What's this Agent Space feature from a cloud service, and how does it help you set up and push out agents to employees, especially if you need them to work with external file storage apps?",
+    "relevant_doc_ids": [
+      "3Wo-iucic7I__chunk_004",
+      "3Wo-iucic7I__chunk_007",
+      "w_W2brDZDko__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "w_W2brDZDko__chunk_009",
+      "w_W2brDZDko__chunk_008",
+      "3Wo-iucic7I__chunk_007",
+      "3Wo-iucic7I__chunk_004",
+      "8rlNdKywldQ__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 0.5,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How's this browser trying to act like a work operating system, and what evidence is there that companies are adopting extensions more often?",
+    "relevant_doc_ids": [
+      "I2SplqZ85dk__chunk_006",
+      "I2SplqZ85dk__chunk_008",
+      "I2SplqZ85dk__chunk_005"
+    ],
+    "reranked_doc_ids": [
+      "I2SplqZ85dk__chunk_006",
+      "I2SplqZ85dk__chunk_008",
+      "o2wkYzu5u50__chunk_002",
+      "I2SplqZ85dk__chunk_007",
+      "8iIvAMZ-XYU__chunk_000"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "Does letting a game-playing AI think through a problem improve its performance compared to the first answer it would normally give?",
+    "relevant_doc_ids": [
+      "Uh-7YX8tkxI__chunk_002",
+      "Uh-7YX8tkxI__chunk_008",
+      "Uh-7YX8tkxI__chunk_003"
+    ],
+    "reranked_doc_ids": [
+      "NYtQuneZMXc__chunk_009",
+      "jnUUo7xso_0__chunk_004",
+      "Uh-7YX8tkxI__chunk_003",
+      "Uh-7YX8tkxI__chunk_008",
+      "sNwaU0w3NS8__chunk_010"
+    ],
+    "recall@k": 1,
+    "mrr": 0.3333333333333333,
+    "precision@k": 0.4
+  },
+  {
+    "query": "Can you share some notable examples of cross-disciplinary collaborations between AI researchers and scientists from other fields, including brain-connectivity mapping projects and AI tools used for geometry and proving theorems?",
+    "relevant_doc_ids": [
+      "NYtQuneZMXc__chunk_012"
+    ],
+    "reranked_doc_ids": [
+      "NYtQuneZMXc__chunk_012",
+      "o8NiE3XMPrM__chunk_017",
+      "4TE-KFXvhAk__chunk_018",
+      "NYtQuneZMXc__chunk_009",
+      "NYtQuneZMXc__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How do these tools help with prototyping, like ready-made templates, running several programming languages inside a virtual machine, and controlling how new versions are rolled out to users?",
+    "relevant_doc_ids": [
+      "R_gqv8PwM78__chunk_003",
+      "x2zvki_VlRE__chunk_005",
+      "x2zvki_VlRE__chunk_003",
+      "R_gqv8PwM78__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "x2zvki_VlRE__chunk_005",
+      "R_gqv8PwM78__chunk_002",
+      "R_gqv8PwM78__chunk_003",
+      "v6Rzo5khNE8__chunk_006",
+      "x2zvki_VlRE__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How do I make a dialog smoothly fade in and out using CSS transitions, what parts should I animate, and how do I handle the overlay behind it?",
+    "relevant_doc_ids": [
+      "UcXWY057YuQ__chunk_001",
+      "UcXWY057YuQ__chunk_002",
+      "UcXWY057YuQ__chunk_003"
+    ],
+    "reranked_doc_ids": [
+      "UcXWY057YuQ__chunk_002",
+      "UcXWY057YuQ__chunk_003",
+      "UcXWY057YuQ__chunk_001",
+      "o2wkYzu5u50__chunk_001",
+      "UcXWY057YuQ__chunk_000"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How can I mock up an AI prompt to generate a vegan Turkish recipe, get the results as JSON, and hook it into an iOS app so it stores data in the cloud?",
+    "relevant_doc_ids": [
+      "rxKYK3DIzN0__chunk_000",
+      "rxKYK3DIzN0__chunk_006",
+      "rxKYK3DIzN0__chunk_008",
+      "rxKYK3DIzN0__chunk_001"
+    ],
+    "reranked_doc_ids": [
+      "rxKYK3DIzN0__chunk_001",
+      "rxKYK3DIzN0__chunk_000",
+      "rxKYK3DIzN0__chunk_003",
+      "rxKYK3DIzN0__chunk_002",
+      "CjpZCWYrSxM__chunk_013"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "Why would a UI element be skipped by screen readers or not announce what happens when you tap it, and how can I use the accessibility tree and debugging tools to find missing clickable targets or visibility problems?",
+    "relevant_doc_ids": [
+      "80qkStdDWXQ__chunk_010",
+      "80qkStdDWXQ__chunk_007",
+      "80qkStdDWXQ__chunk_003",
+      "80qkStdDWXQ__chunk_002",
+      "80qkStdDWXQ__chunk_000"
+    ],
+    "reranked_doc_ids": [
+      "80qkStdDWXQ__chunk_010",
+      "fKY6qYxytLI__chunk_008",
+      "80qkStdDWXQ__chunk_007",
+      "80qkStdDWXQ__chunk_006",
+      "fKY6qYxytLI__chunk_005"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What are the latest screen reader updates for describing images with Gemini-powered AI, including offline support on Pixel devices and the option to ask follow-up questions about the image?",
+    "relevant_doc_ids": [
+      "fKY6qYxytLI__chunk_007",
+      "fKY6qYxytLI__chunk_001"
+    ],
+    "reranked_doc_ids": [
+      "fKY6qYxytLI__chunk_001",
+      "mP9QESmEDls__chunk_005",
+      "fKY6qYxytLI__chunk_000",
+      "7Tnq4y7T4xs__chunk_002",
+      "7Tnq4y7T4xs__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "Why did they drop the old test runner, and what testing option will be supported in the next release?",
+    "relevant_doc_ids": [
+      "eIeJmYdYMQo__chunk_010",
+      "eIeJmYdYMQo__chunk_012",
+      "eIeJmYdYMQo__chunk_011"
+    ],
+    "reranked_doc_ids": [
+      "eIeJmYdYMQo__chunk_011",
+      "eIeJmYdYMQo__chunk_012",
+      "eIeJmYdYMQo__chunk_010",
+      "KXKP2tDPW4Y__chunk_014",
+      "15oPNK1W0Tw__chunk_014"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How does the chat demo show setting up a cloud-hosted MySQL database, generating a script to provision the infrastructure, and figuring out the right permissions to access storage?",
+    "relevant_doc_ids": [
+      "6eTiMIhtnBA__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "6eTiMIhtnBA__chunk_002",
+      "nZhkjSFB6UA__chunk_002",
+      "6eTiMIhtnBA__chunk_003",
+      "6eTiMIhtnBA__chunk_006",
+      "6eTiMIhtnBA__chunk_008"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How much faster is this new feature supposed to be, and does it actually cut down the total processing time?",
+    "relevant_doc_ids": [
+      "BHqxD9qr6Gw__chunk_004",
+      "XEhd9a9YhSk__chunk_015"
+    ],
+    "reranked_doc_ids": [
+      "BHqxD9qr6Gw__chunk_004",
+      "BHqxD9qr6Gw__chunk_003",
+      "juy9nrcTBck__chunk_002",
+      "o8NiE3XMPrM__chunk_013",
+      "XEhd9a9YhSk__chunk_014"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How can I play a 360-degree immersive video that wraps around a person in a scene, using a surface-like object and stereo (3D) video?",
+    "relevant_doc_ids": [
+      "KbTJNK1ALYc__chunk_004",
+      "KbTJNK1ALYc__chunk_003"
+    ],
+    "reranked_doc_ids": [
+      "KbTJNK1ALYc__chunk_003",
+      "KbTJNK1ALYc__chunk_004",
+      "KbTJNK1ALYc__chunk_002",
+      "YYMt7Ddzz6Y__chunk_006",
+      "KbTJNK1ALYc__chunk_001"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What's Firebase AI Logic, and how does it make it easy for a Flutter app to access two AI services using Dart?",
+    "relevant_doc_ids": [
+      "v6Rzo5khNE8__chunk_017",
+      "xo271p-Fl_4__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "xo271p-Fl_4__chunk_002",
+      "v6Rzo5khNE8__chunk_017",
+      "xo271p-Fl_4__chunk_001",
+      "v6Rzo5khNE8__chunk_019",
+      "R_gqv8PwM78__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How does a live web retrieval system fetch pages on the fly and work with a chat interface to answer questions from a simulated internal site without reindexing, relying on current information?",
+    "relevant_doc_ids": [
+      "gstgT0WRoiE__chunk_005",
+      "gstgT0WRoiE__chunk_003",
+      "gstgT0WRoiE__chunk_004",
+      "nZhkjSFB6UA__chunk_005"
+    ],
+    "reranked_doc_ids": [
+      "gstgT0WRoiE__chunk_003",
+      "gstgT0WRoiE__chunk_004",
+      "gstgT0WRoiE__chunk_005",
+      "xr_zgAv0YoI__chunk_006",
+      "xr_zgAv0YoI__chunk_002"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.6
+  },
+  {
+    "query": "Has Go 1.24 made maps faster with its Swiss Tables\u2013based design, and what new under-the-hood tools were added, like Unique Package, weak.Pointers, and AddCleanup?",
+    "relevant_doc_ids": [
+      "kj80m-umOxs__chunk_007"
+    ],
+    "reranked_doc_ids": [
+      "kj80m-umOxs__chunk_007",
+      "kj80m-umOxs__chunk_002",
+      "kj80m-umOxs__chunk_004",
+      "kj80m-umOxs__chunk_001",
+      "kj80m-umOxs__chunk_005"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How can a live audio API keep the delay low in Flutter apps, and what kind of usage and performance monitoring would a Firebase\u2011like service offer for that API?",
+    "relevant_doc_ids": [
+      "v6Rzo5khNE8__chunk_017",
+      "v6Rzo5khNE8__chunk_018"
+    ],
+    "reranked_doc_ids": [
+      "v6Rzo5khNE8__chunk_018",
+      "v6Rzo5khNE8__chunk_017",
+      "xo271p-Fl_4__chunk_010",
+      "v6Rzo5khNE8__chunk_019",
+      "xo271p-Fl_4__chunk_001"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What new discovery features is this platform rolling out to boost user engagement and revenue, like curated spaces and subscription options?",
+    "relevant_doc_ids": [
+      "POUqfDBtRbg__chunk_006",
+      "T41OD37tI54__chunk_001",
+      "POUqfDBtRbg__chunk_007",
+      "POUqfDBtRbg__chunk_012"
+    ],
+    "reranked_doc_ids": [
+      "POUqfDBtRbg__chunk_007",
+      "T41OD37tI54__chunk_008",
+      "OosLbRBM9dA__chunk_001",
+      "POUqfDBtRbg__chunk_011",
+      "POUqfDBtRbg__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How do I put together an app that can act on its own using AI, a cloud backend, and a cross-platform UI, with the AI agent carrying out actions by calling other tools?",
+    "relevant_doc_ids": [
+      "xo271p-Fl_4__chunk_001",
+      "xo271p-Fl_4__chunk_005",
+      "xo271p-Fl_4__chunk_006",
+      "8rlNdKywldQ__chunk_000",
+      "x2zvki_VlRE__chunk_004",
+      "xo271p-Fl_4__chunk_002",
+      "xo271p-Fl_4__chunk_007",
+      "xr_zgAv0YoI__chunk_008",
+      "xo271p-Fl_4__chunk_000",
+      "xo271p-Fl_4__chunk_010",
+      "7Tnq4y7T4xs__chunk_004",
+      "8rlNdKywldQ__chunk_002",
+      "GjvgtwSOCao__chunk_007",
+      "xo271p-Fl_4__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "x2zvki_VlRE__chunk_002",
+      "xr_zgAv0YoI__chunk_008",
+      "8rlNdKywldQ__chunk_002",
+      "8rlNdKywldQ__chunk_006",
+      "x2zvki_VlRE__chunk_004"
+    ],
+    "recall@k": 1,
+    "mrr": 0.5,
+    "precision@k": 0.6
+  },
+  {
+    "query": "How do I drop in a tutorial video in an Android app's UI, use a media library to hook it up to a media player object, and make my own Play/Pause button that's driven by a PlayPauseButtonState?",
+    "relevant_doc_ids": [
+      "89UusPuz8q4__chunk_007",
+      "IaNpcrCSDiI__chunk_007",
+      "3zXVPU2vKXs__chunk_000"
+    ],
+    "reranked_doc_ids": [
+      "IaNpcrCSDiI__chunk_007",
+      "89UusPuz8q4__chunk_006",
+      "89UusPuz8q4__chunk_007",
+      "3zXVPU2vKXs__chunk_011",
+      "3zXVPU2vKXs__chunk_008"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "How does this tool work with my development setup to push an AI-suggested fix right into my workspace, and how are the changes checked, linked to my original code, and saved back into the project?",
+    "relevant_doc_ids": [
+      "EVcahPj2jHM__chunk_004",
+      "jrr8gRI1GaY__chunk_002"
+    ],
+    "reranked_doc_ids": [
+      "EVcahPj2jHM__chunk_004",
+      "w_W2brDZDko__chunk_010",
+      "x2zvki_VlRE__chunk_004",
+      "KXKP2tDPW4Y__chunk_008",
+      "GjvgtwSOCao__chunk_020"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "How do the size of an AI model, the hardware you pick (older GPUs vs newer ones), and using a nearby data center affect the carbon emissions from training? For example, what would training a 405-billion-parameter model require in terms of compute, and how would that impact emissions?",
+    "relevant_doc_ids": [
+      "5MPxzw15ojE__chunk_003",
+      "5MPxzw15ojE__chunk_001",
+      "5MPxzw15ojE__chunk_002",
+      "5MPxzw15ojE__chunk_005"
+    ],
+    "reranked_doc_ids": [
+      "5MPxzw15ojE__chunk_001",
+      "5MPxzw15ojE__chunk_002",
+      "o7Bv4r08FBM__chunk_010",
+      "xLmJJk1gbuE__chunk_007",
+      "xr_zgAv0YoI__chunk_008"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.4
+  },
+  {
+    "query": "Where can I find guides on advanced ways to extend this library, including tips for parallelism, data sharding, and kernel languages, and how can I contribute my own kernel implementations?",
+    "relevant_doc_ids": [
+      "juy9nrcTBck__chunk_006",
+      "juy9nrcTBck__chunk_005",
+      "juy9nrcTBck__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "juy9nrcTBck__chunk_003",
+      "juy9nrcTBck__chunk_008",
+      "wz3kQQubPkc__chunk_003",
+      "juy9nrcTBck__chunk_006",
+      "gATa_9Dogz4__chunk_002"
+    ],
+    "recall@k": 1,
+    "mrr": 0.5,
+    "precision@k": 0.4
+  },
+  {
+    "query": "What are the pros and cons of doing AI work on the user's device, on the server, or a mix for web apps?",
+    "relevant_doc_ids": [
+      "mP9QESmEDls__chunk_001",
+      "YN04nNsg_L4__chunk_002",
+      "YN04nNsg_L4__chunk_008",
+      "YN04nNsg_L4__chunk_001",
+      "xr_zgAv0YoI__chunk_008",
+      "YN04nNsg_L4__chunk_006",
+      "YN04nNsg_L4__chunk_007",
+      "YN04nNsg_L4__chunk_009"
+    ],
+    "reranked_doc_ids": [
+      "YN04nNsg_L4__chunk_002",
+      "mP9QESmEDls__chunk_001",
+      "xr_zgAv0YoI__chunk_008",
+      "YN04nNsg_L4__chunk_001",
+      "YN04nNsg_L4__chunk_000"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.8
+  },
+  {
+    "query": "What's a data governance approach that only allows access from Switzerland and helps prevent data leaks without relying on the usual network perimeter?",
+    "relevant_doc_ids": [
+      "Wzpz_y_EFPs__chunk_004"
+    ],
+    "reranked_doc_ids": [
+      "Wzpz_y_EFPs__chunk_004",
+      "Wzpz_y_EFPs__chunk_003",
+      "Wzpz_y_EFPs__chunk_002",
+      "w_W2brDZDko__chunk_018",
+      "Wzpz_y_EFPs__chunk_000"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "What features would a model explorer provide for visualizing and comparing machine learning models, including tree-style views and side-by-side comparisons of different versions or configurations?",
+    "relevant_doc_ids": [
+      "xLmJJk1gbuE__chunk_003"
+    ],
+    "reranked_doc_ids": [
+      "xLmJJk1gbuE__chunk_003",
+      "4TE-KFXvhAk__chunk_001",
+      "3zXVPU2vKXs__chunk_006",
+      "gstgT0WRoiE__chunk_006",
+      "gstgT0WRoiE__chunk_005"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  },
+  {
+    "query": "What are some real-world examples of tools that help you write or rewrite text through an API, and do you have any details on early access programs and large-scale AI hackathons?",
+    "relevant_doc_ids": [
+      "CjpZCWYrSxM__chunk_007",
+      "o2wkYzu5u50__chunk_010",
+      "CjpZCWYrSxM__chunk_003",
+      "mP9QESmEDls__chunk_004",
+      "CjpZCWYrSxM__chunk_006",
+      "CjpZCWYrSxM__chunk_005",
+      "o2wkYzu5u50__chunk_008"
+    ],
+    "reranked_doc_ids": [
+      "CjpZCWYrSxM__chunk_003",
+      "CjpZCWYrSxM__chunk_007",
+      "o2wkYzu5u50__chunk_008",
+      "CjpZCWYrSxM__chunk_013",
+      "o2wkYzu5u50__chunk_010"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.8
+  },
+  {
+    "query": "How can I use the recording tool to add more steps to an existing journey and capture the inputs for automated testing?",
+    "relevant_doc_ids": [
+      "KXKP2tDPW4Y__chunk_006"
+    ],
+    "reranked_doc_ids": [
+      "KXKP2tDPW4Y__chunk_006",
+      "KXKP2tDPW4Y__chunk_005",
+      "KXKP2tDPW4Y__chunk_007",
+      "80qkStdDWXQ__chunk_011",
+      "ihR8hL_Hmec__chunk_006"
+    ],
+    "recall@k": 1,
+    "mrr": 1.0,
+    "precision@k": 0.2
+  }
+]
