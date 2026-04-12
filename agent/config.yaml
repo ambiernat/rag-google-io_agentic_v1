@@ -1,4 +1,4 @@
-# retrieval/agent/config.yaml
+# agent/config.yaml
 # Configuration for the agentic retrieval layer.
 
 query_rewriter:

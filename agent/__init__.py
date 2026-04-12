@@ -1,4 +1,4 @@
-# retrieval/agent/
+# agent/
 #
 # Agentic retrieval layer.
 #
