@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 """
-dense_rerank_hpo.py
+hybrid_rerank_hpo.py
 
 Hyperparameter Optimization (HPO) for Hybrid Retrieval + CrossEncoder Rerank
 using Optuna and MLflow.
@@ -13,6 +13,13 @@ import logging
 from pathlib import Path
 from datetime import datetime, timezone
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # adjust depth to reach project root
+
+from evaluation.utils import get_latest_ground_truth
+
+from dotenv import load_dotenv
+load_dotenv()
+
 import numpy as np
 from tqdm import tqdm
 
@@ -20,6 +27,7 @@ import optuna
 import mlflow
 import yaml
 import random
+import time
 
 from sentence_transformers import CrossEncoder
 
@@ -36,6 +44,10 @@ CONFIG_PATH = PROJECT_ROOT / "retrieval" / "hpo" / "config_hybrid_rerank.yaml"
 with open(CONFIG_PATH, "r", encoding="utf-8") as f:
     cfg = yaml.safe_load(f)
 
+GT_DIR    = PROJECT_ROOT / cfg["data"]["ground_truth"]["dir"]
+GT_PREFIX = cfg["data"]["ground_truth"]["prefix"]
+GROUND_TRUTH_PATH = get_latest_ground_truth(GT_DIR, GT_PREFIX)
+
 # -----------------------------
 # Logging
 # -----------------------------
@@ -51,23 +63,19 @@ from retrieval.rerankers.crossencoder_reranker import crossencoder_rerank
 # -----------------------------
 # Ground Truth
 # -----------------------------
-from evaluation.utils import get_latest_ground_truth
-
-gt_dir = PROJECT_ROOT / cfg["data"]["ground_truth"]["dir"]
-gt_prefix = cfg["data"]["ground_truth"]["prefix"]
-gt_file = get_latest_ground_truth(gt_dir, gt_prefix)
+gt_file = GROUND_TRUTH_PATH
 
 with open(gt_file, "r", encoding="utf-8") as f:
     ground_truth = json.load(f)
 
 logger.info(f"Loaded {len(ground_truth)} ground truth queries from {gt_file.name}")
 
-
 # Subsample for HPO speed
 HPO_SAMPLE_SIZE = 50
 random.seed(42)
 ground_truth = random.sample(ground_truth, min(HPO_SAMPLE_SIZE, len(ground_truth)))
 logger.info(f"Subsampled to {len(ground_truth)} queries for HPO")
+
 # -----------------------------
 # Hybrid wrapper
 # -----------------------------
@@ -75,7 +83,7 @@ def hybrid_wrapper(query: str, top_k: int) -> list:
     hits = retrieve_hybrid(query, top_k=top_k)
     return [
         {
-            "id": hit.payload.get("doc_id", str(hit.id)),  # ← use string doc_id
+            "id": hit.payload.get("doc_id", str(hit.id)),
             "text": hit.payload.get("text", ""),
             **hit.payload
         }
@@ -112,7 +120,7 @@ def objective(trial):
 
     metrics_list = []
 
-    with mlflow.start_run(nested=True): 
+    with mlflow.start_run(nested=True):
         mlflow.log_params({
             "retrieve_k": retrieve_k,
             "rerank_k": rerank_k,
@@ -122,6 +130,8 @@ def objective(trial):
         for item in tqdm(ground_truth, desc=f"Trial {trial.number}", leave=False):
             query = item["query"]
             relevant_ids = item["relevant_doc_ids"]
+
+            t0 = time.perf_counter()
 
             retrieved_docs = hybrid_wrapper(query, retrieve_k)
 
@@ -138,13 +148,22 @@ def objective(trial):
             else:
                 retrieved_ids = []
 
-            metrics_list.append(compute_metrics(retrieved_ids, relevant_ids, rerank_k))
+            latency_ms = (time.perf_counter() - t0) * 1000
+
+            metrics = compute_metrics(retrieved_ids, relevant_ids, rerank_k)
+            metrics["latency_ms"] = latency_ms                    # end-to-end latency per query
+            metrics["chunks_retrieved"] = len(retrieved_docs)     # number of retrieved chunks
+
+            metrics_list.append(metrics)
 
         metric_map = {"recall@k": "recall_k", "mrr": "mrr", "precision@k": "precision_k"}
         avg_metrics = {
             metric_map[k]: float(np.mean([m.get(k, 0) for m in metrics_list]))
             for k in metric_map
         }
+
+        avg_metrics["avg_latency_ms"] = float(np.mean([m["latency_ms"] for m in metrics_list]))
+        avg_metrics["avg_chunks_per_query"] = float(np.mean([m["chunks_retrieved"] for m in metrics_list]))
 
         for name, value in avg_metrics.items():
             mlflow.log_metric(name, value)
@@ -200,6 +219,8 @@ if cfg["artifacts"].get("save_best_results", True):
         query = item["query"]
         relevant_ids = item["relevant_doc_ids"]
 
+        t0 = time.perf_counter()
+
         retrieved_docs = hybrid_wrapper(query, best_params["retrieve_k"])
         reranked_docs = crossencoder_rerank(
             query=query,
@@ -210,6 +231,8 @@ if cfg["artifacts"].get("save_best_results", True):
             batch_size=cfg["compute"].get("batch_size", 16),
         )
 
+        latency_ms = (time.perf_counter() - t0) * 1000
+
         retrieved_ids = [doc["id"] for doc in reranked_docs]
         metrics = compute_metrics(retrieved_ids, relevant_ids, best_params["rerank_k"])
 
@@ -217,6 +240,8 @@ if cfg["artifacts"].get("save_best_results", True):
             "query": query,
             "relevant_doc_ids": relevant_ids,
             "reranked_doc_ids": retrieved_ids,
+            "latency_ms": latency_ms,
+            "chunks_retrieved": len(retrieved_docs),
             **metrics
         })
 

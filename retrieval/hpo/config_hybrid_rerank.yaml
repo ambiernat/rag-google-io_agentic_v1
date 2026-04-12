@@ -1,18 +1,19 @@
 # ================================
-# HPO: Dense + CrossEncoder Rerank
+# HPO: Hybrid + CrossEncoder Rerank
 # ================================
 
 experiment:
-  name: "hybrid_rerank_hpo"
-  tracking_uri: "file:../mlruns"
+  name: "/Users/ambiernat@gmail.com/hybrid_rerank_hpo"
+  tracking_uri: "databricks"
   n_trials: 20
   direction: "maximize"
 
 data:
   ground_truth:
     dir: "data/eval/ground_truth"
-    prefix: "ground_truth_gpt-5-nano"
+    prefix: "gt_gpt-5-nano_paraphrased"
     results_dir: "data/eval/results/hpo"
+  n_subsample: 30
 
 
 retrieval:
@@ -31,7 +32,6 @@ reranker:
   models:
     - "cross-encoder/ms-marco-TinyBERT-L-2-v2"
     - "cross-encoder/ms-marco-MiniLM-L-6-v2"
-    - "BAAI/bge-reranker-base"
 
 objective:
   primary_metric: "recall@5"
@@ -41,7 +41,7 @@ objective:
 
 compute:
   device: "cpu"          # cpu | cuda
-  batch_size: 16
+  batch_size: 32
 
 logging:
   level: "INFO"
